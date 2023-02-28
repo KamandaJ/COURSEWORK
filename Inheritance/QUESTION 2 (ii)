@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// The Person class
+class Person {
+private:
+    string name;
+    int age;
+public:
+    Person(string name, int age) {
+        this->name = name;
+        this->age = age;
+    }
+    string getName() {
+        return name;
+    }
+    int getAge() {
+        return age;
+    }
+};
+
+// The Student class that inherits from Person
+class Student : public Person {
+private:
+    string institution;
+    int year;
+    string registrationNumber;
+public:
+    Student(string name, int age, string institution, int year, string registrationNumber) : Person(name, age) {
+        this->institution = institution;
+        this->year = year;
+        this->registrationNumber = registrationNumber;
+    }
+    string getInstitution() {
+        return institution;
+    }
+    int getYear() {
+        return year;
+    }
+    string getRegistrationNumber() {
+        return registrationNumber;
+    }
+};
+
+// Driver code
+int main() {
+    // Creating an object of Student class
+    Student student("John Kamanda", 23, "JKUAT University", 3, "ENE211-0134/2017");
+
+    // Accessing the member functions of the Student class and the inherited Person class
+    cout << "Name: " << student.getName() << endl;
+    cout << "Age: " << student.getAge() << endl;
+    cout << "Institution: " << student.getInstitution() << endl;
+    cout << "Year: " << student.getYear() << endl;
+    cout << "Registration Number: " << student.getRegistrationNumber() << endl;
+
+    return 0;
+}
