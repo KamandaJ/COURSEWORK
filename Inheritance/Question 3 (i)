@@ -1,0 +1,6 @@
+A class called "Course" can be created, which can contain common properties such as course code, course name, and course duration.
+This class can be inherited by other classes such as "ICTCourse," "LawCourse," and "BusinessCourse," which can add their own specific properties such as the course syllabus.
+The BSC-IT course can be represented by creating a class called "BSCITCourse," which can inherit from the "ICTCourse" class.
+The three stages of the BSC-IT course can be represented by creating three classes called "BSCITStage1," "BSCITStage2," and "BSCITStage3," which can inherit from the "BSCITCourse" class.
+Using inheritance, we can create a well-structured and organized class hierarchy to represent the various courses and stages of the university.
+This can assist in the capture and processing of student details by providing a consistent and structured way to store and access information about the students, their courses, and their progress.
