@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Computer {
+protected:
+    string brand;
+    int ram;
+    int storage;
+public:
+    Computer(string b, int r, int s) : brand(b), ram(r), storage(s) {}
+    virtual void display() {
+        cout << "Brand: " << brand << endl;
+        cout << "RAM: " << ram << "GB" << endl;
+        cout << "Storage: " << storage << "GB" << endl;
+    }
+};
+
+class Client : public Computer {
+protected:
+    string username;
+public:
+    Client(string b, int r, int s, string u) : Computer(b, r, s), username(u) {}
+    void display() override {
+        Computer::display();
+        cout << "Username: " << username << endl;
+    }
+};
+
+class Server : public Computer {
+protected:
+    string hostname;
+public:
+    Server(string b, int r, int s, string h) : Computer(b, r, s), hostname(h) {}
+    void display() override {
+        Computer::display();
+        cout << "Hostname: " << hostname << endl;
+    }
+};
+
+int main() {
+    Client client("Dell", 8, 256, "john");
+    Server server("HP", 16, 1000, "server1");
+
+    client.display();
+    cout << endl;
+    server.display();
+    cout << endl;
+
+    return 0;
+}
