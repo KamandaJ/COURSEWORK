@@ -1,0 +1,107 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+  protected:
+    string name;
+    int age;
+    string address;
+    string contact;
+  public:
+    void getDetails();
+    void displayDetails();
+};
+
+void Student::getDetails() {
+  cout << "Enter name: ";
+  getline(cin, name);
+  cout << "Enter age: ";
+  cin >> age;
+  cin.ignore();
+  cout << "Enter address: ";
+  getline(cin, address);
+  cout << "Enter contact: ";
+  getline(cin, contact);
+}
+
+void Student::displayDetails() {
+  cout << "Name: " << name << endl;
+  cout << "Age: " << age << endl;
+  cout << "Address: " << address << endl;
+  cout << "Contact: " << contact << endl;
+}
+
+class Course {
+  protected:
+    string code;
+    string name;
+    int duration;
+  public:
+    void getDetails();
+    void displayDetails();
+};
+
+void Course::getDetails() {
+  cout << "Enter course code: ";
+  getline(cin, code);
+  cout << "Enter course name: ";
+  getline(cin, name);
+  cout << "Enter course duration: ";
+  cin >> duration;
+  cin.ignore();
+}
+
+void Course::displayDetails() {
+  cout << "Course Code: " << code << endl;
+  cout << "Course Name: " << name << endl;
+  cout << "Course Duration: " << duration << " months" << endl;
+}
+
+class ICTCourse : public Course {
+  public:
+    void getDetails();
+    void displayDetails();
+};
+
+void ICTCourse::getDetails() {
+  Course::getDetails();
+  // Add ICT-specific details
+}
+
+void ICTCourse::displayDetails() {
+  Course::displayDetails();
+  // Add ICT-specific details
+}
+
+class BSCITCourse : public ICTCourse {
+  private:
+    int stage;
+  public:
+    void getDetails();
+    void displayDetails();
+};
+
+void BSCITCourse::getDetails() {
+  ICTCourse::getDetails();
+  cout << "Enter stage: ";
+  cin >> stage;
+  cin.ignore();
+}
+
+void BSCITCourse::displayDetails() {
+  ICTCourse::displayDetails();
+  cout << "Stage: " << stage << endl;
+}
+
+int main() {
+  Student s;
+  s.getDetails();
+  s.displayDetails();
+
+  BSCITCourse bscit;
+  bscit.getDetails();
+  bscit.displayDetails();
+
+  return 0;
+}
