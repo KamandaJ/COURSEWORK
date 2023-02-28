@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+
+class person {
+public:
+    person(int age, const std::string& firstname, const std::string& lastname) :
+        age_(age),
+        firstname_(firstname),
+        lastname_(lastname)
+    {
+    }
+
+    void getValues(int& age, std::string& firstname, std::string& lastname) const {
+        age = age_;
+        firstname = firstname_;
+        lastname = lastname_;
+    }
+
+    void setValues(int age, const std::string& firstname, const std::string& lastname) {
+        age_ = age;
+        firstname_ = firstname;
+        lastname_ = lastname;
+    }
+
+private:
+    int age_;
+    std::string firstname_;
+    std::string lastname_;
+};
+
+int main() {
+    person p(23, "John", "Kamanda");
+
+    int age;
+    std::string firstname, lastname;
+    p.getValues(age, firstname, lastname);
+    std::cout << "Age: " << age << std::endl;
+    std::cout << "First name: " << firstname << std::endl;
+    std::cout << "Last name: " << lastname << std::endl;
+
+    return 0;
+}
