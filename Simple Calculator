@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    double num1, num2, result;
+    char operation;
+
+    cout << "Enter the first number: ";
+    cin >> num1;
+
+    cout << "Enter the second number: ";
+    cin >> num2;
+
+    cout << "Enter the operation (+ or -): ";
+    cin >> operation;
+
+    if (operation == '+') {
+        result = num1 + num2;
+        cout << "The sum of " << num1 << " and " << num2 << " is " << result << endl;
+    }
+    else if (operation == '-') {
+        result = num1 - num2;
+        cout << "The difference between " << num1 << " and " << num2 << " is " << result << endl;
+    }
+    else {
+        cout << "Invalid operation. Please enter + or -." << endl;
+    }
+
+    return 0;
+}
