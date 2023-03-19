@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+class employee {
+    int emp_id;
+    string first_name;
+    string second_name;
+    string surname;
+    char gender;
+    string dob;
+    double monthly_basic_salary;
+
+    friend double compute_pension(const employee& emp);
+
+public:
+    employee(int id, string fname, string sname, string surnm, char gdr, string dob, double mbs) {
+        emp_id = id;
+        first_name = fname;
+        second_name = sname;
+        surname = surnm;
+        gender = gdr;
+        this->dob = dob;
+        monthly_basic_salary = mbs;
+    }
+
+    void show_employee() {
+        cout << "Employee ID: " << emp_id << endl;
+        cout << "Name: " << first_name << " " << second_name << " " << surname << endl;
+        cout << "Gender: " << gender << endl;
+        cout << "Date of Birth: " << dob << endl;
+        cout << "Monthly Basic Salary: $" << monthly_basic_salary << endl;
+        cout << "Pension Contribution: $" << compute_pension(*this) << endl;
+    }
+};
+
+double compute_pension(const employee& emp) {
+    double pension = emp.monthly_basic_salary * 0.05;
+    return pension;
+}
+
+int main() {
+    employee emp_obj(1234, "John", "M", "Kamanda", 'M', "04-05-1999", 5000.00);
+    emp_obj.show_employee();
+    return 0;
+}
