@@ -1,0 +1,104 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+class Book {
+private:
+    string author;
+    double price;
+    string title;
+    int book_number;
+    int num_copies;
+
+public:
+    // Constructor
+    Book(string author, double price, string title, int book_number, int num_copies) {
+        this->author = author;
+        this->price = price;
+        this->title = title;
+        this->book_number = book_number;
+        this->num_copies = num_copies;
+    }
+
+    // Getters
+    string get_author() { return author; }
+    double get_price() { return price; }
+    string get_title() { return title; }
+    int get_book_number() { return book_number; }
+    int get_num_copies() { return num_copies; }
+
+    // Setters
+    void set_author(string author) { this->author = author; }
+    void set_price(double price) { this->price = price; }
+    void set_title(string title) { this->title = title; }
+    void set_book_number(int book_number) { this->book_number = book_number; }
+    void set_num_copies(int num_copies) { this->num_copies = num_copies; }
+
+    // Insert a new book record into the database
+    void insert_book() {
+        cout << "Enter author: ";
+        cin >> author;
+        cout << "Enter price: ";
+        cin >> price;
+        cout << "Enter title: ";
+        cin >> title;
+        cout << "Enter book number: ";
+        cin >> book_number;
+        cout << "Enter number of copies: ";
+        cin >> num_copies;
+    }
+
+    // Display a list of all books in the database
+    void display_all_books(vector<Book>& books) {
+        for (int i = 0; i < books.size(); i++) {
+            cout << "Author: " << books[i].get_author() << endl;
+            cout << "Price: " << books[i].get_price() << endl;
+            cout << "Title: " << books[i].get_title() << endl;
+            cout << "Book number: " << books[i].get_book_number() << endl;
+            cout << "Number of copies: " << books[i].get_num_copies() << endl;
+            cout << endl;
+        }
+    }
+};
+
+int main() {
+    vector<Book> books;
+    int choice;
+
+    do {
+        cout << "1. Insert a new book record" << endl;
+        cout << "2. Display a list of all books" << endl;
+        cout << "3. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                Book book("", 0, "", 0, 0);
+                book.insert_book();
+                books.push_back(book);
+                break;
+            }
+            case 2: {
+                if (books.size() == 0) {
+                    cout << "No books in the database" << endl;
+                } else {
+                    Book book("", 0, "", 0, 0);
+                    book.display_all_books(books);
+                }
+                break;
+            }
+            case 3: {
+                cout << "Exiting program" << endl;
+                break;
+            }
+            default: {
+                cout << "Invalid choice. Please try again" << endl;
+            }
+        }
+    } while (choice != 3);
+
+    return 0;
+}
