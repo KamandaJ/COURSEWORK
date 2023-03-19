@@ -1,0 +1,82 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+class Voter {
+    public:
+        // Constructor
+        Voter(string cardId, string nationalId, string firstName, string middleName, string surname, string pollingStation, string dob, string gender) {
+            this->cardId = cardId;
+            this->nationalId = nationalId;
+            this->firstName = firstName;
+            this->middleName = middleName;
+            this->surname = surname;
+            this->pollingStation = pollingStation;
+            this->dob = dob;
+            this->gender = gender;
+        }
+        
+        // Display the voter details
+        void display() {
+            cout << "Card ID: " << cardId << endl;
+            cout << "National ID: " << nationalId << endl;
+            cout << "Name: " << firstName << " " << middleName << " " << surname << endl;
+            cout << "Polling Station: " << pollingStation << endl;
+            cout << "Date of Birth: " << dob << endl;
+            cout << "Gender: " << gender << endl;
+        }
+
+    private:
+        string cardId;
+        string nationalId;
+        string firstName;
+        string middleName;
+        string surname;
+        string pollingStation;
+        string dob;
+        string gender;
+};
+
+int main() {
+    vector<Voter> voters;
+    char choice;
+
+    do {
+        cout << "Enter the voter details:\n";
+        string cardId, nationalId, firstName, middleName, surname, pollingStation, dob, gender;
+        cout << "Card ID: ";
+        cin >> cardId;
+        cout << "National ID: ";
+        cin >> nationalId;
+        cout << "First Name: ";
+        cin >> firstName;
+        cout << "Middle Name: ";
+        cin >> middleName;
+        cout << "Surname: ";
+        cin >> surname;
+        cout << "Polling Station: ";
+        cin >> pollingStation;
+        cout << "Date of Birth (dd-mm-yyyy): ";
+        cin >> dob;
+        cout << "Gender: ";
+        cin >> gender;
+
+        Voter newVoter(cardId, nationalId, firstName, middleName, surname, pollingStation, dob, gender);
+        voters.push_back(newVoter);
+
+        cout << "Voter added successfully!\n\n";
+
+        cout << "Do you want to add another voter? (y/n): ";
+        cin >> choice;
+    } while (choice == 'y' || choice == 'Y');
+
+    cout << "\nList of Voters:\n";
+    for (int i = 0; i < voters.size(); i++) {
+        cout << "\nVoter " << i+1 << ":\n";
+        voters[i].display();
+    }
+
+    return 0;
+}
