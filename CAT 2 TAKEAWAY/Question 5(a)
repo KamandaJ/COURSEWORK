@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+class employee {
+    int emp_id;
+    string first_name;
+    string middle_name;
+    string last_name;
+    char gender;
+    string dob;
+    double basic_salary;
+
+    public:
+        employee(int id, string fn, string mn, string ln, char gen, string dob, double bs) {
+            emp_id = id;
+            first_name = fn;
+            middle_name = mn;
+            last_name = ln;
+            gender = gen;
+            this->dob = dob;
+            basic_salary = bs;
+        }
+
+        void show_employee() {
+            cout << "Employee ID: " << emp_id << endl;
+            cout << "Name: " << first_name << " " << middle_name << " " << last_name << endl;
+            cout << "Gender: " << gender << endl;
+            cout << "Date of Birth: " << dob << endl;
+            cout << "Monthly Basic Salary: $" << basic_salary << endl;
+        }
+};
+
+int main() {
+    employee emp_obj(4932, "John", "M", "Kamanda", 'M', "04-05-1999", 5000.00);
+    emp_obj.show_employee();
+    return 0;
+}
